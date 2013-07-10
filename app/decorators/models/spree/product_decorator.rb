@@ -1,4 +1,8 @@
 # Add "Document" to Product Model
 Spree::Product.class_eval do
-  has_many :docs, :as => :viewable, :order => :position, :dependent => :destroy
+  
+  delegate :docs, :to => :master, :prefix => true
+  
+  
+  has_many :variant_docs, :source => :docs, :through => :variants_including_master, :order => :position
 end

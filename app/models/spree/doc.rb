@@ -2,8 +2,8 @@ module Spree
 class Doc < Asset
   validate :no_attachment_errors
   has_attached_file :attachment,
-                    :url => "/assets/products/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
+                    :url => "/spree/docs/products/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/spree/docs/products/:id/:style/:basename.:extension"
 
   before_post_process :skip_thumbnail_creation
   
