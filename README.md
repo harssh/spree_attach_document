@@ -1,7 +1,8 @@
 SpreeProductDocument
 ====================
 
-Introduction goes here.
+Product Documents is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that enables a site administrator to add and manage product-specific documents.
+
 
 Installation
 ------------
