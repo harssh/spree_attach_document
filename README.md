@@ -4,13 +4,19 @@ SpreeProductDocument
 Product Documents is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that enables a site administrator to add and manage product-specific documents.
 
 
+Version Support 
+------------
+
+This branch is for spree 1-2-stable
+
+
 Installation
 ------------
 
 Add spree_product_document to your Gemfile:
 
 ```ruby
-gem 'spree_product_document'
+gem 'spree_product_document', :git => 'git://github.com/harsshhfs/spree_product_document.git', :branch => "1-2-stable"
 ```
 
 Bundle your dependencies and run the installation generator:
