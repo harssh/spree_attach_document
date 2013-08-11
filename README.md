@@ -1,3 +1,6 @@
+Dont use master branch use other stable branches according to usr spree version
+------------------------------------------------------------------------------------
+
 SpreeProductDocument
 ====================
 
