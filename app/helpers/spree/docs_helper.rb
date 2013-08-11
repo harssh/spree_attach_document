@@ -1,3 +1,4 @@
+module Spree
 module DocsHelper
   def get_doc_icon(doc)
     word_icon = 'word_icon.png'
@@ -15,4 +16,5 @@ module DocsHelper
   def get_doc_name(filename)
     return  (filename) ? filename.gsub(/[_]/, ' ') : ''
   end
+end
 end

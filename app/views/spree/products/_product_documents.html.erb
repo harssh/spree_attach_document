@@ -15,3 +15,27 @@
   <% end %>
 </table>
 <% end %>
+<% if @product and !@product.docs.empty? %>
+<table>
+  <tr>
+  <td><h3><%= t("variant_documents") %></h3></td>
+  </tr>
+  <% if @product.docs.empty? %>
+    <tr><td><p><%= t("none") %></p></td></tr>
+  <% else %>
+    <% @product.variants.each do |variant| %>
+    <% variant.docs.each do |doc| %>
+      <tr id="<%= spree_dom_id doc %>" data-hook="docs_row">
+        <td><span class="handle"></span><%= image_tag(get_doc_icon(doc), :align => 'left') %></td>
+        <% if @product.has_variants? %>
+          <td><%= variant.options_text %></td>
+        <% end %>
+        <td><%= link_to( image_tag(get_doc_icon(doc))+get_doc_name(doc.attachment.original_filename),doc.attachment.url, { :target => "_blank" }) %></td>
+        </tr>
+    <% end %>
+  <% end %>
+ 
+  <% end %>
+</table>
+<% end %>
+
