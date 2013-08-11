@@ -37,4 +37,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_product_document/factories'
 ```
 
-Copyright (c) 2013 [Harssh], released under the New BSD License
+Copyright (c) 2013 [https://github.com/harsshhfs], released under the New BSD License
