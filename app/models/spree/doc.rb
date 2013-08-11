@@ -1,6 +1,9 @@
 module Spree
 class Doc < Asset
   validate :no_attachment_errors
+
+   attr_accessible :alt, :attachment, :position, :viewable_type, :viewable_id
+
   has_attached_file :attachment,
                     :url => "/spree/docs/products/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/spree/docs/products/:id/:style/:basename.:extension"

@@ -1,52 +1,35 @@
 module Spree
-class Admin::DocsController < Admin::ResourceController
-  before_filter :load_data
-	
-  create.before :set_viewable
-  update.before :set_viewable
-  destroy.before :destroy_before
+  module Admin
+    class DocsController < ResourceController
+      before_filter :load_data
 
-  def update_positions
-    params[:positions].each do |id, index|
-      Doc.update_all(['position=?', index], ['id=?', id])
-    end
+      create.before :set_viewable
+      update.before :set_viewable
+      destroy.before :destroy_before
 
-    respond_to do |format|
-      format.js { render :text => 'Ok' }
-    end
-  end
-  
-  private
+      private
 
-  def location_after_save
-    admin_product_docs_url(@product)
-  end
+        def location_after_save
+          admin_product_docs_url(@product)
+        end
 
-  def load_data
-    @product = Product.find_by_permalink(params[:product_id])
-  end
+        def load_data
+          @product = Product.where(:permalink => params[:product_id]).first
+          @variants = @product.variants.collect do |variant|
+            [variant.options_text, variant.id]
+          end
+          @variants.insert(0, [I18n.t(:all), @product.master.id])
+        end
 
-  def set_viewable
-    if !params[:doc].empty? and params[:doc].has_key? :viewable_id
-      if params[:doc][:viewable_id] == "All"
-        @doc.viewable = @product
-      else
-	      @doc.viewable_type = 'Product'
-	      @doc.viewable_id = @product.id
-      end
-    else
-	    @doc.viewable = @product
+        def set_viewable
+          @doc.viewable_type = 'Spree::Variant'
+          @doc.viewable_id = params[:doc][:viewable_id]
+        end
+
+        def destroy_before
+          @viewable = @doc.viewable
+        end
+
     end
   end
-	
-  def update_before
-     @doc.viewable_type = 'Product'
-     @doc.viewable_id = @product.id
-  end
-
-  def destroy_before 
-    @viewable = object.viewable
-  end
-
-end
 end

@@ -1,13 +1,22 @@
 
-<table class="index sortable">
-	<tr>
-	  <th><%= t("type") %></th>
-          <th><%= t("document_name") %></th>
-	  <th><%= t("action") %></th>
-	</tr>
- 
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => 'Docs'} %>
+
+<table class="index sortable" data-hook="docs_table" data-sortable-link="<%= update_positions_admin_product_docs_url(@product) %>">
+  <tr data-hook="docs_header">
+    <th><%= t(:thumbnail) %></th>
+    <% if @product.has_variants? %>
+      <th><%= Spree::Variant.model_name.human %></th>
+    <% end %>
+    <th><%= t(:alt_text) %></th>
+    <th><%= t(:action) %></th>
+  </tr>
+
+   
+   
   <% @product.docs.each do |doc| %>
-    <tr id="<%= dom_id(doc) %>">
+    <tr id="<%= spree_dom_id doc %>">
       <td>
         <span class="handle"></span>
         <%= image_tag(get_doc_icon(doc), :align => 'left') %>
@@ -19,6 +28,24 @@
         <%= link_to_delete doc, {:url => admin_product_doc_url(@product, doc) }%>
       </td>
     </tr>
+  <% end %>
+
+
+  <% @product.variants.each do |variant| %>
+    <% variant.docs.each do |doc| %>
+      <tr id="<%= spree_dom_id doc %>" data-hook="docs_row">
+        <td><span class="handle"></span><%= image_tag(get_doc_icon(doc), :align => 'left') %></td>
+        <% if @product.has_variants? %>
+          <td><%= variant.options_text %></td>
+        <% end %>
+        <td><%= link_to(doc.attachment.original_filename, doc.attachment.url) %></td>
+        <td class="actions">
+          <%= link_to_with_icon 'edit', t(:edit), edit_admin_product_doc_url(@product, doc) %>
+          &nbsp;
+          <%= link_to_delete doc, {:url => admin_product_doc_url(@product, doc) }%>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
  
 </table>
