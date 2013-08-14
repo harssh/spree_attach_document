@@ -1,4 +1,4 @@
-Dont use master branch use other stable branches according to usr spree version
+Dont use master branch use other stable branches according to your spree version
 ------------------------------------------------------------------------------------
 
 SpreeProductDocument
