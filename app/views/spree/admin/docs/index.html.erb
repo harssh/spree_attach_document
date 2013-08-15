@@ -4,7 +4,7 @@
       
       jQuery('#new_doc_link').click(function (event) { 
         event.preventDefault();
-        jQuery(this).hide();
+        // jQuery(this).hide();
         jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#docs').html(r);} });
       });
       
@@ -22,7 +22,7 @@
   <li><%= link_to_with_icon('icon-plus', t(:new_doc), new_admin_product_doc_url(@product), :id => 'new_doc_link', :class => 'button') %></li>
 <% end %>
 
-<div id="docss" data-hook></div>
+<div id="docs" data-hook></div>
 
 <% unless @product.docs.any? || @product.variant_docs.any? %>
   <div class="no-objects-found">
@@ -62,7 +62,7 @@
           <% if @product.has_variants? %>
             <td><%= options_text_for(doc) %></td>
           <% end %>
-          <td><%= link_to(doc.attachment.original_filename, doc.attachment.url) %></td>
+          <td><%= link_to truncate(doc.attachment.original_filename, :length => 30), doc.attachment.url %></td>
           <td class="actions">
             <%= link_to_with_icon 'icon-edit', t(:edit), edit_admin_product_doc_url(@product, doc), :no_text => true, :data => {:action => 'edit'} %>
             <%= link_to_delete doc, { :url => admin_product_doc_url(@product, doc), :no_text => true } %>
