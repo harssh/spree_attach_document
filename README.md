@@ -1,7 +1,7 @@
-SpreeProductDocument
+SpreeAttachDocument
 ====================
 
-Product Documents is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that enables a site administrator to add and manage product-specific documents.
+SpreeAttachDocument is an extension to Spree (a complete open source commerce solution for Ruby on Rails) that enables a site administrator to add and manage product-specific documents.
 
 
 Version Support 
@@ -13,17 +13,17 @@ This branch is for spree 1-3-stable
 Installation
 ------------
 
-Add spree_product_document to your Gemfile:
+Add spree_attach_document to your Gemfile:
 
 ```ruby
-gem 'spree_product_document', :git => 'git://github.com/harsshhfs/spree_product_document.git', :branch => "1-3-stable"
+gem 'spree_attach_document', :git => 'git://github.com/harsshhfs/spree_attach_document.git', :branch => "1-3-stable"
 ```
 
 Bundle your dependencies and run the installation generator:
 
 ```shell
 bundle
-bundle exec rails g spree_product_document:install
+bundle exec rails g spree_attach_document:install
 ```
 
 Testing
@@ -41,7 +41,7 @@ When testing your applications integration with this extension you may use it's 
 Simply add this require statement to your spec_helper:
 
 ```ruby
-require 'spree_product_document/factories'
+require 'spree_attach_document/factories'
 ```
 
 Copyright (c) 2013 [https://github.com/harsshhfs], released under the New BSD License
