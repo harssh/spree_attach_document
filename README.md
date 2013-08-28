@@ -13,7 +13,7 @@ This branch is for spree 1-2-stable
 Installation
 ------------
 
-Add spree_product_document to your Gemfile:
+Add spree_attach_document to your Gemfile:
 
 ```ruby
 gem 'spree_attach_document', :git => 'git://github.com/harsshhfs/spree_attach_document.git', :branch => "1-2-stable"
