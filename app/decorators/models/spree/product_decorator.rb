@@ -5,4 +5,8 @@ Spree::Product.class_eval do
   
   
   has_many :variant_docs, :source => :docs, :through => :variants_including_master, :order => :position
+
+    alias_method :docs, :master_docs
+
+   
 end

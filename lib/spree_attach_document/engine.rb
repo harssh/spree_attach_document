@@ -1,8 +1,8 @@
-module SpreeProductDocument
+module SpreeAttachDocument
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'spree_product_document'
+    engine_name 'spree_attach_document'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
