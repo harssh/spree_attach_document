@@ -1,4 +1,4 @@
-module SpreeProductDocument
+module SpreeAttachDocument
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
