@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_attach_document'
-  s.version     = '1.3.0'
+  s.version     = '1.3.1'
   s.summary     = 'spree product document'
   s.description = 'Spree product document'
   s.required_ruby_version = '>= 1.8.7'
