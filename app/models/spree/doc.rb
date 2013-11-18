@@ -12,6 +12,9 @@ class Doc < Asset
   
   ALLOWED_CONTENT_TYPES = [ "application/msword","application/vnd.ms-excel","application/pdf" ]
   ALLOWED_FILE_EXTENSIONS = [ "pdf", "doc", "docx", "xls", "xlsx" ]
+  
+  include Spree::Core::S3Support
+  supports_s3 :attachment
 
   def no_attachment_errors
     unless attachment.errors.empty?
